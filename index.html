@@ -185,6 +185,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/01/Vue%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Mylogo.png">
+      <meta itemprop="name" content="Rezcy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rezcy的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/01/Vue%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">Vue学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-01 16:32:35 / 修改时间：16:46:29" itemprop="dateCreated datePublished" datetime="2022-06-01T16:32:35+08:00">2022-06-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Vue起步"><a href="#Vue起步" class="headerlink" title=" Vue起步"></a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/01/Vue%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/30/Page-Ability%E5%90%AF%E5%8A%A8%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,10 +274,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-05-30 16:48:25 / 修改时间：16:50:26" itemprop="dateCreated datePublished" datetime="2022-05-30T16:48:25+08:00">2022-05-30</time>
+              <time title="创建时间：2022-05-30 16:48:25" itemprop="dateCreated datePublished" datetime="2022-05-30T16:48:25+08:00">2022-05-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-01 16:31:31" itemprop="dateModified" datetime="2022-06-01T16:31:31+08:00">2022-06-01</time>
+              </span>
 
           
 
@@ -224,14 +296,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="1-standard"><a href="#1-standard" class="headerlink" title="1.standard"></a>1.standard</h3><p>在connfig.json文件中将Ability的启动类型设置为standard时，在任何情况下，无论Page Ability被显示多少次，都会创建一个新的Page Ability实例；</p>
-<h3 id="2-singleton"><a href="#2-singleton" class="headerlink" title="2.singleton"></a>2.singleton</h3><p>如果想要显示的Ability在栈顶那么再次显示时，则不会去重新创建新的Abilityh实例</p>
-<h3 id="3-Page-Ability管理模式"><a href="#3-Page-Ability管理模式" class="headerlink" title="3.Page Ability管理模式"></a>3.Page Ability管理模式</h3><p>在HarmonyOS中是使用栈来管理页面的显示，只有在栈顶的页面才会显示，原理如下图：<br><img src="https://img2022.cnblogs.com/blog/2450139/202205/2450139-20220520093704944-1375100322.png" alt="image"><br>图1</p>
-<p>当想让页面2显示时需要对页面2进行压栈操作，将页面2放置到栈顶；当页面1的启动类型为singleton时，此时想让页面1重新在界面上显示，那么需要对页面2进行出栈操作，也就是销毁Page Ability，也就是调用terminateAbility方法要完成的工作。此时栈中状态如下图所示：<br><img src="https://img2022.cnblogs.com/blog/2450139/202205/2450139-20220520094237143-1884727636.png" alt="image"><br>图2</p>
-<p>如果页面1的启动类型为standard,那么栈中状态如图：<br><img src="https://img2022.cnblogs.com/blog/2450139/202205/2450139-20220520094624631-2071277754.png" alt="image"><br>图3</p>
-<h3 id="4-跳转方法"><a href="#4-跳转方法" class="headerlink" title="4.跳转方法"></a>4.跳转方法</h3><p>1.startAbility()跳转<br>如果我们跳转的目标页面未设置启动类型，则进行入栈操作</p>
-<p>2.present（）跳转<br>如果指定的AbilitySlice实例已经在栈中存在时，则栈中位于此实例之上的AbilitySlice均会出栈并终止其生命周期</p>
-
+          <h3 id="1-standard"><a href="#1-standard" class="headerlink" title=" 1.standard"></a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/30/Page-Ability%E5%90%AF%E5%8A%A8%E7%B1%BB%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -314,7 +387,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
